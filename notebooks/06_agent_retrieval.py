@@ -119,7 +119,8 @@ print(f"\nΔ recall vs single-shot:  tách câu {split - base:+.3f}   tách + fi
 #
 # **Và hãy so hai dòng agentic với nhau.** Bật filter suy đoán làm *giảm* recall
 # so với chỉ tách câu — vì topic đoán từ keyword loại bỏ luôn những document liên
-# quan nằm ở cụm bên cạnh. Đổi lại, nó tốn ít call hơn. Đây đúng là bài học của
+# quan nằm ở cụm bên cạnh. Trong lần đo này, cả hai có cùng số call trung bình
+# (2,3), nên không có bằng chứng filter giúp giảm số call. Đây đúng là bài học của
 # NB5 lặp lại ở tầng agent: **filter không miễn phí, phải đo chứ đừng đoán.**
 
 # %% [markdown]

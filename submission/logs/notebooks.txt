@@ -1,0 +1,114 @@
+Running 01_embeddings_index.ipynb
+D:\Phase2.Track2\LABday19 chiều\LeVanSang-K4-Track2-Day19-VectorFeatureStore-Lab\.venv\Lib\site-packages\zmq\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.
+  self._get_loop()
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 12 executed
+  cell 14 executed
+PASS 01_embeddings_index.ipynb
+Running 02_hybrid_search_rrf.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 12 executed
+PASS 02_hybrid_search_rrf.ipynb
+Running 03_search_api_benchmark.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 12 executed
+PASS 03_search_api_benchmark.ipynb
+Running 04_feast_feature_store.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 12 executed
+  cell 14 executed
+PASS 04_feast_feature_store.ipynb
+Running 05_filtered_search.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 9 executed
+  cell 12 executed
+PASS 05_filtered_search.ipynb
+Running 06_agent_retrieval.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 13 executed
+  cell 15 executed
+PASS 06_agent_retrieval.ipynb
+Running 07_semantic_cache.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 9 executed
+  cell 12 executed
+PASS 07_semantic_cache.ipynb
+Running 08_feature_engineering.ipynb
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\security
+[IPKernelApp] WARNING | Could not set permissions on C:\Users\lesan\.ipython\profile_default\pid
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+  cell 2 executed
+  cell 4 executed
+  cell 6 executed
+  cell 8 executed
+  cell 10 executed
+  cell 13 executed
+D:\Phase2.Track2\LABday19 chiều\LeVanSang-K4-Track2-Day19-VectorFeatureStore-Lab\scripts\gen_spend.py:25: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "event_timestamp": now - pd.Timedelta(f"{days_ago}D"),
+D:\Phase2.Track2\LABday19 chiều\LeVanSang-K4-Track2-Day19-VectorFeatureStore-Lab\scripts\gen_spend.py:28: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "created": now - pd.Timedelta(f"{days_ago}D"),
+wrote D:\Phase2.Track2\LABday19 chiều\LeVanSang-K4-Track2-Day19-VectorFeatureStore-Lab\app\feast_repo_ondemand\data\user_spend.parquet (150 rows, 50 users)
+  cell 16 executed
+  cell 17 executed
+PASS 08_feature_engineering.ipynb

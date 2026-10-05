@@ -17,6 +17,7 @@
 # %%
 import _setup  # noqa: F401
 import subprocess
+import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -38,7 +39,7 @@ NOW = datetime.now(timezone.utc).replace(microsecond=0)
 
 
 def make_user_profile(n_users: int = 100) -> pl.DataFrame:
-    return pl.DataFrame({
+    current = pl.DataFrame({
         "user_id": [f"u_{i:03d}" for i in range(n_users)],
         "reading_speed_wpm": [180 + (i * 7) % 200 for i in range(n_users)],
         "preferred_language": ["vi" if i % 3 != 0 else "en" for i in range(n_users)],
@@ -48,11 +49,19 @@ def make_user_profile(n_users: int = 100) -> pl.DataFrame:
         ],
         "event_timestamp": [NOW - timedelta(hours=i % 48) for i in range(n_users)],
     })
+    # Keep a real previous version so the historical event has an eligible row.
+    previous = current.with_columns(
+        (pl.col("event_timestamp") - pl.duration(days=1)).alias("event_timestamp"),
+        (pl.col("reading_speed_wpm") - 10).alias("reading_speed_wpm"),
+    )
+    return pl.concat([previous, current])
 
 
 def make_item_popularity(n_items: int = 1000) -> pl.DataFrame:
+    corpus = [json.loads(line) for line in
+              (REPO_ROOT / "data" / "corpus_vn.jsonl").read_text(encoding="utf-8").splitlines()]
     return pl.DataFrame({
-        "doc_id": [f"item_{i:04d}" for i in range(n_items)],
+        "doc_id": [d["doc_id"] for d in corpus[:n_items]],
         "click_count_24h": [(i * 13) % 500 for i in range(n_items)],
         "ctr_7d": [round(((i * 7) % 100) / 100.0, 3) for i in range(n_items)],
         "avg_dwell_seconds": [10.0 + (i * 0.7) % 90 for i in range(n_items)],
@@ -94,6 +103,11 @@ if res.stderr:
     print("STDERR:")
     print(res.stderr)
 assert res.returncode == 0, f"feast apply failed: {res.stderr}"
+listed = subprocess.run(["feast", "feature-views", "list"], cwd=FEAST_DIR,
+                        capture_output=True, text=True, encoding="utf-8", check=True)
+print(listed.stdout)
+for view in ("user_profile_features", "item_popularity_features", "query_velocity_features"):
+    assert view in listed.stdout
 
 # %% [markdown]
 # ## 3. `feast materialize-incremental` — load offline → online
@@ -196,6 +210,15 @@ historical = fs.get_historical_features(
     ],
 ).to_df()
 print(historical)
+assert len(historical) == 3
+by_user = historical.set_index("user_id")
+# u_001's current profile (187) is at NOW-1h, AFTER its event at NOW-2h.
+# PIT must choose its older value (177), while online lookup returns 187.
+assert by_user.loc["u_001", "reading_speed_wpm"] == 177
+assert features["reading_speed_wpm"][0] == 187
+assert by_user.loc["u_002", "reading_speed_wpm"] == 194
+assert by_user.loc["u_003", "reading_speed_wpm"] == 201
+print("PASS — PIT: future profile excluded for u_001; historical values correct for u_002/u_003.")
 
 # %% [markdown]
 # ## Deliverable evidence

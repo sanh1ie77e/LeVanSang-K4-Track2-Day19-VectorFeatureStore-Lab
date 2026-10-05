@@ -18,6 +18,7 @@ import json
 import statistics as stats
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -98,7 +99,10 @@ def main() -> int:
 
     # ── Latency run (REPS reps × 50 queries) ────────────────────────────
     print(f"Latency — P50 / P95 / P99 over {REPS_PER_QUERY * len(golden)} calls/mode")
+    latency_results = {}
     for mode in ("keyword", "semantic", "hybrid"):
+        for q in golden[:10]:
+            searcher.search(q["query"], mode=mode, top_k=TOP_K, rrf_k=RRF_K)
         latencies = []
         for _ in range(REPS_PER_QUERY):
             for q in golden:
@@ -110,15 +114,34 @@ def main() -> int:
         p50 = latencies[n // 2]
         p95 = latencies[int(n * 0.95)]
         p99 = latencies[int(n * 0.99)]
+        latency_results[mode] = {"p50_ms": p50, "p95_ms": p95, "p99_ms": p99, "n_calls": n}
         print(f"  {mode:9}: P50={p50:6.1f}ms  P95={p95:6.1f}ms  P99={p99:6.1f}ms")
     print()
+
+    # Save the actual measurements for the submission report; no golden data changes.
+    report = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "n_docs": searcher.size, "n_queries": len(golden), "rrf_k": RRF_K,
+        "model": searcher.embedder.model_name,
+        "measurement": "in-process retrieval including query embedding; excludes HTTP",
+        "precision_at_10": {"keyword": avg_kw, "semantic": avg_sem, "hybrid": avg_hyb},
+        "slices": {kind: {mode: stats.mean(values) for mode, values in metrics.items()}
+                   for kind, metrics in by_mode.items()},
+        "latency": latency_results,
+    }
+    output = ROOT / "submission" / "benchmark.json"
+    output.parent.mkdir(exist_ok=True)
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    latency_pass = latency_results["hybrid"]["p99_ms"] < 50
+    print(f"{'PASS' if latency_pass else 'FAIL'} — hybrid retrieval P99 < 50ms: "
+          f"{latency_results['hybrid']['p99_ms']:.1f}ms")
 
     # ── Rubric assertion ────────────────────────────────────────────────
     if avg_hyb > avg_kw and avg_hyb > avg_sem:
         delta_kw = (avg_hyb - avg_kw) * 100
         delta_sem = (avg_hyb - avg_sem) * 100
         print(f"PASS — hybrid beats keyword by {delta_kw:+.1f}pp, semantic by {delta_sem:+.1f}pp")
-        return 0
+        return 0 if latency_pass else 1
     print(f"FAIL — hybrid did NOT beat both pure modes (kw={avg_kw:.1%} sem={avg_sem:.1%} hyb={avg_hyb:.1%})")
     print("       Check your RRF implementation: score(d) = sum_r 1/(k + rank_r(d)), k=60")
     return 1

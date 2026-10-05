@@ -40,7 +40,7 @@ tokenized = [(d["title"] + " " + d["text"]).lower().split() for d in docs]
 bm25 = BM25Okapi(tokenized)
 
 # Vector
-embedder = TextEmbedding(model_name="BAAI/bge-small-en-v1.5")
+embedder = TextEmbedding(model_name="BAAI/bge-small-en-v1.5", threads=4)
 client = QdrantClient(":memory:")
 client.create_collection(
     collection_name="lab19",
@@ -147,6 +147,7 @@ print(f"Precision@10 (avg over {len(golden)} queries):")
 print(f"  Keyword (BM25)   : {statistics.mean(p_kw):.1%}")
 print(f"  Semantic (vector): {statistics.mean(p_sem):.1%}")
 print(f"  Hybrid  (RRF=60) : {statistics.mean(p_hyb):.1%}   <- should win")
+assert statistics.mean(p_hyb) > max(statistics.mean(p_kw), statistics.mean(p_sem))
 
 # %% [markdown]
 # ## 5. Slice theo loại query
@@ -171,6 +172,15 @@ for t in ("exact", "paraphrase", "mixed"):
           f"{statistics.mean(m['sem']):>6.1%} "
           f"{statistics.mean(m['hyb']):>6.1%}")
 
+assert statistics.mean(by_type["mixed"]["hyb"]) > max(
+    statistics.mean(by_type["mixed"]["kw"]), statistics.mean(by_type["mixed"]["sem"])
+)
+if statistics.mean(by_type["paraphrase"]["sem"]) < max(
+    statistics.mean(by_type["paraphrase"]["kw"]), statistics.mean(by_type["paraphrase"]["hyb"])
+):
+    print("LIMITATION — vector does not win the paraphrase slice with the required Lite model; "
+          "the rubric slice criterion is not fully met.")
+
 # %% [markdown]
 # ### Diễn giải kết quả
 #
@@ -179,9 +189,10 @@ for t in ("exact", "paraphrase", "mixed"):
 # - `paraphrase` queries dùng từ Việt **không** xuất hiện verbatim trong docs
 #   → cả BM25 và vector đều giảm điểm. Trên synthetic corpus 1000-doc với
 #   embedding model `BAAI/bge-small-en-v1.5` (English-trained), semantic
-#   recall trên Vietnamese paraphrases yếu (24-32%). **Đổi sang `bge-m3`
-#   (full Docker path) sẽ giúp semantic thắng paraphrase queries** — đây là
-#   teaching moment cho "embedding model choice matters".
+#   Precision@10 trên Vietnamese paraphrases yếu (24%). Mô hình đa ngữ là
+#   một hướng thử nghiệm, nhưng chưa được đo trong hồ sơ này nên không thể
+#   khẳng định đổi model sẽ thắng. Giữ model Lite và golden set theo README;
+#   tiêu chí rubric về vector thắng paraphrase chưa được đáp ứng đầy đủ.
 # - `mixed` queries có cả từ exact + ý tưởng paraphrased → **hybrid thắng rõ**
 #   (~100% vs 97-98% pure modes). Đây là pattern production-relevant nhất
 #   vì user thật ít khi viết query 100% exact term hoặc 100% paraphrase.

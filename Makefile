@@ -2,12 +2,14 @@
 ## Two paths: lightweight (default, no Docker) and full Docker.
 
 VENV     := .venv
-PY       := $(VENV)/bin/python
-PIP      := $(VENV)/bin/pip
-JUPYTER  := $(VENV)/bin/jupyter
-JUPYTEXT := $(VENV)/bin/jupytext
-UVICORN  := $(VENV)/bin/uvicorn
-PYTEST   := $(VENV)/bin/pytest
+BIN      := $(if $(wildcard $(VENV)/Scripts/python.exe),$(VENV)/Scripts,$(VENV)/bin)
+PY       := $(BIN)/python
+PIP      := $(PY) -m pip
+JUPYTER  := $(PY) -m jupyter
+JUPYTEXT := $(PY) -m jupytext
+UVICORN  := $(PY) -m uvicorn
+PYTEST   := $(PY) -m pytest
+export PYTHONUTF8 := 1
 
 .DEFAULT_GOAL := help
 
@@ -32,8 +34,8 @@ api: ## [lite] Start FastAPI /search on http://localhost:8000
 	@$(UVICORN) app.main:app --reload --port 8000
 
 lab: ## [lite] Open Jupyter Lab on http://localhost:8888
-	@$(JUPYTEXT) --to notebook --update notebooks/[0-9]*.py 2>/dev/null || true
-	@$(JUPYTER) lab --notebook-dir=notebooks --ServerApp.token='' --no-browser
+	@$(JUPYTEXT) --to notebook --update notebooks/[0-9]*.py
+	@$(JUPYTER) lab --notebook-dir=notebooks --no-browser
 
 benchmark: ## [both] Precision@10 (keyword/semantic/hybrid) + P99 latency table
 	@$(PY) scripts/benchmark.py
@@ -46,13 +48,7 @@ gen-advanced: ## [both] Generate data for the advanced missions (NB6 + NB8)
 	@$(PY) scripts/gen_spend.py
 
 notebooks: ## [both] Execute ALL notebooks headless (what the grader runs)
-	@$(JUPYTEXT) --to notebook --update notebooks/[0-9]*.py >/dev/null 2>&1 || true
-	@for nb in notebooks/[0-9]*.ipynb; do \
-		printf '%-42s' "$$nb"; \
-		PATH="$(PWD)/$(VENV)/bin:$$PATH" $(VENV)/bin/jupyter nbconvert --to notebook \
-			--execute --inplace "$$nb" --ExecutePreprocessor.timeout=900 \
-			>/dev/null 2>&1 && echo PASS || echo FAIL; \
-	done
+	@$(PY) scripts/run_notebooks.py
 
 clean-lite: ## [lite] Wipe venv + data + Feast registry
 	rm -rf $(VENV) data/corpus_vn.jsonl data/golden_set.jsonl data/qdrant_storage \

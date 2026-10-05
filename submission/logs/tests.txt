@@ -1,0 +1,8 @@
+...............................................                          [100%]
+============================== warnings summary ===============================
+tests/test_search_core.py::test_api_validates_input_and_returns_measured_response
+  D:\Phase2.Track2\LABday19 chiều\LeVanSang-K4-Track2-Day19-VectorFeatureStore-Lab\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+47 passed, 1 warning in 14.28s

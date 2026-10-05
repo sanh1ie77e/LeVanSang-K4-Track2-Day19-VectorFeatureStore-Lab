@@ -51,7 +51,7 @@ print(json.dumps(docs[0], ensure_ascii=False, indent=2))
 # > Cho lab này dùng `bge-small-en` để mọi laptop chạy được nhanh.
 
 # %%
-embedder = TextEmbedding(model_name="BAAI/bge-small-en-v1.5")
+embedder = TextEmbedding(model_name="BAAI/bge-small-en-v1.5", threads=4)
 sample = list(embedder.embed(["cloud computing tiếng Việt"]))[0]
 print(f"Vector dim: {len(sample)}")
 print(f"First 8 values: {sample[:8].tolist()}")
@@ -132,6 +132,8 @@ hits2 = client.query_points(collection_name="lab19", query=q_vec2, limit=5).poin
 print(f"Query (paraphrase): {query2!r}")
 for h in hits2:
     print(f"  [{h.payload['topic']:>9}] score={h.score:.3f}  {h.payload['title']}")
+assert len(hits2) == 5 and all(h.payload["topic"] == "cloud" for h in hits2)
+print("PASS — all 5 paraphrase hits belong to cloud.")
 
 # %% [markdown]
 # ## Deliverable evidence (chụp màn hình)

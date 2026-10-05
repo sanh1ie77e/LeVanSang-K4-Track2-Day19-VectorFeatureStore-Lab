@@ -1,0 +1,75 @@
+
+======================================================================
+Query 1/5
+User: u_001; query: Tôi đã đọc gì về Kubernetes?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [48afd96a-d1ca-4824-9b3a-b18f999c0b5c] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [227259a6-b903-4fe2-a9d5-6a33eeeaa650] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+- [ff73c472-d669-46ad-bfe8-af848869a36f] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+
+LLM answer (gpt-4.1-mini-2025-04-14):
+Bạn đã đọc về Kubernetes, cụ thể là sử dụng HPA (Horizontal Pod Autoscaler) để tự động mở rộng số lượng pod dựa trên CPU và lưu lượng truy cập [48afd96a-d1ca-4824-9b3a-b18f999c0b5c].
+Token usage: {'input_tokens': 310, 'input_tokens_details': {'cache_write_tokens': 0, 'cached_tokens': 0}, 'output_tokens': 63, 'output_tokens_details': {'reasoning_tokens': 0}, 'total_tokens': 373}
+
+======================================================================
+Query 2/5
+User: u_001; query: Recommend đọc gì tiếp
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [48afd96a-d1ca-4824-9b3a-b18f999c0b5c] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [5e6f1b49-5b6c-45b3-9950-a2c2b6b55e67] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+- [227259a6-b903-4fe2-a9d5-6a33eeeaa650] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+
+LLM answer (gpt-4.1-mini-2025-04-14):
+Bạn có thể tiếp tục đọc về các kỹ thuật autoscaling nâng cao trong cloud như cách kết hợp HPA với cluster autoscaler để tối ưu hiệu năng và chi phí. Ngoài ra, nghiên cứu thêm về sử dụng spot instances hiệu quả trong kiến trúc cloud cũng rất phù hợp với bạn hiện tại [48afd96a-d1ca-4824-9b3a-b18f999c0b5c][5e6f1b49-5b6c-45b3-9950-a2c2b6b55e67]. Nếu muốn, mình có thể đề xuất tài liệu cụ thể.
+Token usage: {'input_tokens': 321, 'input_tokens_details': {'cache_write_tokens': 0, 'cached_tokens': 0}, 'output_tokens': 132, 'output_tokens_details': {'reasoning_tokens': 0}, 'total_tokens': 453}
+
+======================================================================
+Query 3/5
+User: u_001; query: Tôi đang quan tâm gì gần đây?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [1275763a-c3a2-4c53-b2fe-fb5ad54eba4a] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+- [227259a6-b903-4fe2-a9d5-6a33eeeaa650] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+- [5e6f1b49-5b6c-45b3-9950-a2c2b6b55e67] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+
+LLM answer (gpt-4.1-mini-2025-04-14):
+Gần đây bạn quan tâm đến chi phí cloud và cân bằng tải giữa nhiều region, cùng với việc học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm [1275763a-c3a2-4c53-b2fe-fb5ad54eba4a][227259a6-b903-4fe2-a9d5-6a33eeeaa650].
+Token usage: {'input_tokens': 318, 'input_tokens_details': {'cache_write_tokens': 0, 'cached_tokens': 0}, 'output_tokens': 86, 'output_tokens_details': {'reasoning_tokens': 0}, 'total_tokens': 404}
+
+======================================================================
+Query 4/5
+User: u_001; query: Tài liệu về tự động mở rộng hạ tầng?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [ff73c472-d669-46ad-bfe8-af848869a36f] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+- [48afd96a-d1ca-4824-9b3a-b18f999c0b5c] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [1275763a-c3a2-4c53-b2fe-fb5ad54eba4a] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+
+LLM answer (gpt-4.1-mini-2025-04-14):
+Tự động mở rộng hạ tầng (auto scaling) trong cloud thường liên quan đến việc sử dụng các dịch vụ như Kubernetes HPA (Horizontal Pod Autoscaler) để mở rộng pod dựa trên CPU hoặc lưu lượng, hoặc các dịch vụ auto scaling nhóm server như AWS Auto Scaling, Azure VM Scale Sets. Bạn có thể tìm tài liệu về cách thiết lập auto scaling dựa trên các chỉ số sử dụng tài nguyên, traffic hoặc custom metric.
+
+Đề xuất bạn đọc thêm tài liệu về Kubernetes HPA (đã từng đọc về HPA trước đó [48afd96a-d1ca-4824-9b3a-b18f999c0b5c]) và các dịch vụ auto scaling của provider đang dùng. Nếu cần, tôi có thể hỗ trợ tìm tài liệu cụ thể hơn.
+Token usage: {'input_tokens': 314, 'input_tokens_details': {'cache_write_tokens': 0, 'cached_tokens': 0}, 'output_tokens': 167, 'output_tokens_details': {'reasoning_tokens': 0}, 'total_tokens': 481}
+
+======================================================================
+Query 5/5
+User: u_001; query: Cho tôi summary cloud security
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [ff73c472-d669-46ad-bfe8-af848869a36f] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+- [1275763a-c3a2-4c53-b2fe-fb5ad54eba4a] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+- [5e6f1b49-5b6c-45b3-9950-a2c2b6b55e67] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+
+LLM answer (gpt-4.1-mini-2025-04-14):
+Cloud security tóm tắt như sau: tập trung vào quản lý quyền truy cập (IAM với nguyên tắc quyền tối thiểu), mã hóa dữ liệu khi lưu trữ và truyền tải, cùng việc ghi lại audit log để theo dõi hoạt động trên tài nguyên đám mây, giúp bảo vệ dữ liệu và ngăn chặn truy cập trái phép [ff73c472-d669-46ad-bfe8-af848869a36f].
+Token usage: {'input_tokens': 321, 'input_tokens_details': {'cache_write_tokens': 0, 'cached_tokens': 0}, 'output_tokens': 95, 'output_tokens_details': {'reasoning_tokens': 0}, 'total_tokens': 416}
+
+PASS — 5 queries, real Feast profile, no cross-user episodic leak.
+PASS — 5 completed OpenAI Responses API answers.

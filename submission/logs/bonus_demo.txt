@@ -1,0 +1,52 @@
+
+======================================================================
+Query 1/5
+User: u_001; query: Tôi đã đọc gì về Kubernetes?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [96f9f519-5153-4d4f-a66e-756a21dc72db] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [657255d2-190a-49b6-a71b-236342d99e36] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+- [d80fd9b0-e066-4084-964b-dcf1960837e7] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+
+======================================================================
+Query 2/5
+User: u_001; query: Recommend đọc gì tiếp
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [96f9f519-5153-4d4f-a66e-756a21dc72db] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [504cbd4a-fdcb-4382-9407-dafdb7c265d0] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+- [657255d2-190a-49b6-a71b-236342d99e36] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+
+======================================================================
+Query 3/5
+User: u_001; query: Tôi đang quan tâm gì gần đây?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [c3f2d663-dac3-4ee1-b7df-09057b0c3df8] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+- [657255d2-190a-49b6-a71b-236342d99e36] Tôi đang học BM25, vector search, RRF và Feast để cá nhân hóa tìm kiếm.
+- [504cbd4a-fdcb-4382-9407-dafdb7c265d0] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+
+======================================================================
+Query 4/5
+User: u_001; query: Tài liệu về tự động mở rộng hạ tầng?
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [d80fd9b0-e066-4084-964b-dcf1960837e7] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+- [96f9f519-5153-4d4f-a66e-756a21dc72db] Tôi đã đọc Kubernetes: dùng HPA để tự động mở rộng pod theo CPU và lưu lượng truy cập.
+- [c3f2d663-dac3-4ee1-b7df-09057b0c3df8] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+
+======================================================================
+Query 5/5
+User: u_001; query: Cho tôi summary cloud security
+Profile: language=vi; topic=cloud; reading=187 wpm.
+Recent activity (materialized snapshot): queries_last_hour=11; distinct_topics_24h=4.
+Top episodic memories (BM25 + vector + RRF k=60):
+- [d80fd9b0-e066-4084-964b-dcf1960837e7] Tài liệu cloud security: IAM cấp quyền tối thiểu, mã hóa dữ liệu và audit log cho tài nguyên đám mây.
+- [c3f2d663-dac3-4ee1-b7df-09057b0c3df8] Gần đây tôi quan tâm chi phí cloud và cân bằng tải giữa nhiều region.
+- [504cbd4a-fdcb-4382-9407-dafdb7c265d0] Ghi chú cloud: autoscaling giúp co giãn hạ tầng khi nhiều người dùng truy cập; kết hợp spot instance để giảm chi phí.
+
+PASS — 5 queries, real Feast profile, no cross-user episodic leak.

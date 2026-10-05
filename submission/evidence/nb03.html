@@ -1,0 +1,37 @@
+<!doctype html><html lang="vi"><meta charset="utf-8">
+<title>NB3 · FastAPI &amp; server-side latency</title><style>
+*{box-sizing:border-box} body{margin:0;background:#f3f6fa;color:#14243b;font:14px 'Segoe UI',sans-serif}
+main{max-width:1440px;margin:auto;padding:24px} h1{margin:4px 0 8px;font-size:27px}
+.meta{color:#48617d;margin-bottom:18px} .grid{display:grid;gap:12px}
+section{background:white;border:1px solid #d4deeb;border-radius:8px;padding:14px}
+label{font-size:12px;color:#386382;font-weight:600} pre{font:13px/1.45 Consolas,'Courier New',monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0}
+footer{font-size:11px;color:#586b83;margin-top:12px;overflow-wrap:anywhere}
+body.nb04 .grid{grid-template-columns:1fr 1fr} body.nb04 section:first-child{grid-row:span 2}
+body.nb04 pre{font-size:12px;line-height:1.35}
+@media(max-width:500px){
+main{padding:10px} h1{font-size:17px} .meta{font-size:10px;margin-bottom:8px}
+.grid{gap:6px} section{padding:7px} label{font-size:8px}
+pre,body.nb04 pre{font-size:9px;line-height:1.3;margin-top:4px}
+body.nb04 pre{font-size:8px;line-height:1.2}
+body.nb04 .grid{grid-template-columns:1fr} body.nb04 section:first-child{grid-row:auto}
+footer{font-size:7px;line-height:1.3;margin-top:8px}
+}
+</style><body class="nb03"><main><div class="meta">LÊ VĂN SANG · K4 TRACK 2 · LAB 19 · LITE</div>
+<h1>NB3 · FastAPI &amp; server-side latency</h1><div class="meta">Trích đoạn stdout từ notebook đã thực thi: 03_search_api_benchmark.ipynb</div>
+<div class="grid"><section><label>In [3] · stdout</label><pre>{&#x27;ready&#x27;: True, &#x27;n_docs&#x27;: 1000}
+{&#x27;query&#x27;: &#x27;cloud computing tự động mở rộng&#x27;, &#x27;mode&#x27;: &#x27;hybrid&#x27;, &#x27;top_k&#x27;: 10, &#x27;latency_ms&#x27;: 19.912500007194467}
+latency_ms: 19.9
+top-3 hits:
+       cloud_016  score=0.0325  Điện toán đám mây: tự động mở rộng theo lưu lượng
+       cloud_072  score=0.0323  Điện toán đám mây: tự động mở rộng theo lưu lượng
+       cloud_053  score=0.0315  Điện toán đám mây: tự động mở rộng theo lưu lượng
+10 warmup calls + 100 measured calls per mode; server-side includes embedding.
+  mode            P50      P95      P99  P99(wall)
+  keyword       1.5ms    2.2ms    2.5ms     47.9ms
+  semantic      8.1ms    9.7ms   10.2ms     12.7ms
+  hybrid       11.3ms   16.3ms   20.5ms     23.3ms
+Hybrid P99 server-side: 20.5ms
+PASS — hybrid P99 &lt; 50ms (20.5ms)
+API server stopped</pre></section></div>
+<footer>Source SHA-256: 7924cd442cd91227edb2aa8a1b58962a42c084461a21a5e9b886043e40d3326e<br>Ảnh minh chứng chụp từ trang hiển thị output này; toàn bộ code/output nằm trong notebook.</footer>
+</main></body></html>

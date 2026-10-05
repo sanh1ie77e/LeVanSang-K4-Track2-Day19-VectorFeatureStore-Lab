@@ -1,0 +1,37 @@
+<!doctype html><html lang="vi"><meta charset="utf-8">
+<title>NB4 · Feast, SQLite &amp; Point-in-Time</title><style>
+*{box-sizing:border-box} body{margin:0;background:#f3f6fa;color:#14243b;font:14px 'Segoe UI',sans-serif}
+main{max-width:1440px;margin:auto;padding:24px} h1{margin:4px 0 8px;font-size:27px}
+.meta{color:#48617d;margin-bottom:18px} .grid{display:grid;gap:12px}
+section{background:white;border:1px solid #d4deeb;border-radius:8px;padding:14px}
+label{font-size:12px;color:#386382;font-weight:600} pre{font:13px/1.45 Consolas,'Courier New',monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0}
+footer{font-size:11px;color:#586b83;margin-top:12px;overflow-wrap:anywhere}
+body.nb04 .grid{grid-template-columns:1fr 1fr} body.nb04 section:first-child{grid-row:span 2}
+body.nb04 pre{font-size:12px;line-height:1.35}
+@media(max-width:500px){
+main{padding:10px} h1{font-size:17px} .meta{font-size:10px;margin-bottom:8px}
+.grid{gap:6px} section{padding:7px} label{font-size:8px}
+pre,body.nb04 pre{font-size:9px;line-height:1.3;margin-top:4px}
+body.nb04 pre{font-size:8px;line-height:1.2}
+body.nb04 .grid{grid-template-columns:1fr} body.nb04 section:first-child{grid-row:auto}
+footer{font-size:7px;line-height:1.3;margin-top:8px}
+}
+</style><body class="nb04"><main><div class="meta">LÊ VĂN SANG · K4 TRACK 2 · LAB 19 · LITE</div>
+<h1>NB4 · Feast, SQLite &amp; Point-in-Time</h1><div class="meta">Trích đoạn stdout từ notebook đã thực thi: 04_feast_feature_store.ipynb</div>
+<div class="grid"><section><label>In [3] · stdout</label><pre>query_velocity_features   {&#x27;user&#x27;}    FeatureView  Yes        AVAILABLE_ONLINE
+user_profile_features     {&#x27;user&#x27;}    FeatureView  Yes        AVAILABLE_ONLINE
+item_popularity_features  {&#x27;item&#x27;}    FeatureView  Yes        AVAILABLE_ONLINE</pre></section><section><label>In [4] · stdout</label><pre>Materializing 3 feature views to 2026-10-05 04:48:56+00:00 into the sqlite online store.
+query_velocity_features from 2026-10-05 03:52:26+00:00 to 2026-10-05 04:48:56+00:00:
+user_profile_features from 2026-10-05 03:52:26+00:00 to 2026-10-05 04:48:56+00:00:
+item_popularity_features from 2026-10-05 03:52:26+00:00 to 2026-10-05 04:48:56+00:00:</pre></section><section><label>In [5] · stdout</label><pre>Single lookup: 44.04ms
+{&#x27;user_id&#x27;: &#x27;u_001&#x27;, &#x27;reading_speed_wpm&#x27;: 187, &#x27;topic_affinity&#x27;: &#x27;cloud&#x27;, &#x27;preferred_language&#x27;: &#x27;vi&#x27;, &#x27;distinct_topics_24h&#x27;: 4, &#x27;queries_last_hour&#x27;: 11}</pre></section><section><label>In [6] · stdout</label><pre>Online lookup latency over 100 calls:
+  P50 = 0.25ms
+  P95 = 0.39ms
+  P99 = 0.59ms
+PASS — online lookup P99 &lt; 10ms (0.59ms)</pre></section><section><label>In [7] · stdout</label><pre>user_id           event_timestamp  reading_speed_wpm topic_affinity
+0   u_001 2026-10-05 02:48:56+00:00                177          cloud
+1   u_003 2026-10-05 04:48:56+00:00                201       database
+2   u_002 2026-10-05 03:48:56+00:00                194       security
+PASS — PIT: future profile excluded for u_001; historical values correct for u_002/u_003.</pre></section></div>
+<footer>Source SHA-256: a9bb6fe410092d6621a85633ee3a736281ac07b813baa13871ff3e0268a2f55e<br>Ảnh minh chứng chụp từ trang hiển thị output này; toàn bộ code/output nằm trong notebook.</footer>
+</main></body></html>

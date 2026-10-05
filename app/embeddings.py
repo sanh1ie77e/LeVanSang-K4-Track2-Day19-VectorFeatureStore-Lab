@@ -77,7 +77,12 @@ class Embedder:
         p = self.spec.provider
         if p == "fastembed":
             from fastembed import TextEmbedding
-            self._impl = TextEmbedding(model_name=self.spec.model)
+            # Explicit CPU budget avoids ONNX's all-core thread pool overhead
+            # for the small, single-query batches served by the REST endpoint.
+            threads = int(os.getenv("EMBEDDING_THREADS", "4"))
+            if threads < 1:
+                raise ValueError("EMBEDDING_THREADS must be a positive integer")
+            self._impl = TextEmbedding(model_name=self.spec.model, threads=threads)
         elif p == "sentence-transformers":
             try:
                 from sentence_transformers import SentenceTransformer
